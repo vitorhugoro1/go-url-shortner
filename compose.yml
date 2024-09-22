@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      dockerfile: .setup/Dockerfile
+      context: .
+    container_name: go-url-shortener
+    ports:
+      - 8080:8080
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
